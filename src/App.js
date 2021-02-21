@@ -1,11 +1,12 @@
 import React from "react";
 import "./style.css";
-import Container from "react-bootstrap/Container";
+import rue from "./rue.jpg";
 
 function Header(props) {
   return (
     <header>
       <h1>{props.name}</h1>
+      <img src={rue}/>
       <img
         src="https://stevewlu.github.io/fren283/assets/images/rue-médiévale.png"
         class="img-fluid"
