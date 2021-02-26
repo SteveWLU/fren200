@@ -1,5 +1,18 @@
-import React from "react";
+import React, { useReducer } from "react";
 import "./style.css";
+
+function Test() {
+  const [checked, toggle] = useReducer(checked => !checked, false);
+
+  return (
+    <>
+      <>
+        <input type="checkbox" value={checked} onChange={toggle} />
+      </>
+      <p>{checked ? "checked" : "not checked"}</p>
+    </>
+  );
+}
 
 function Header(props) {
   return (
@@ -34,7 +47,9 @@ function Main(props) {
         recommended.
       </p>
       <ul>
-        {props.assignments.map((assign) => (<li key={assign.id}>{assign.title}</li>))}
+        {props.assignments.map(assign => (
+          <li key={assign.id}>{assign.title}</li>
+        ))}
       </ul>
     </section>
   );
@@ -55,13 +70,17 @@ const assignments = [
   "Présentation 2"
 ];
 
-const assignObjects = assignments.map((assign, i) => ({id: i, title: assign}));
+const assignObjects = assignments.map((assign, i) => ({
+  id: i,
+  title: assign
+}));
 
 function App() {
   return (
     <div className="App">
+      <Test />
       <Header name="L'Histoire des idées" />
-      <Main assignments={assignObjects}/>
+      <Main assignments={assignObjects} />
       <Footer year={new Date().getFullYear()} />
     </div>
   );
